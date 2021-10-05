@@ -19,3 +19,7 @@ h1 {
 .flex-container {
   display: flex !important;
 }
+select {
+  box-shadow: none !important;
+  border-color: black !important;
+}
