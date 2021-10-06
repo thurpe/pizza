@@ -5,11 +5,13 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 // eslint-disable-next-line no-unused-vars
 import bootstrap from "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { Provider } from "react-redux";
+import store from "./../store";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById("root")
 );
 
