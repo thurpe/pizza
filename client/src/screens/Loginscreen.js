@@ -53,14 +53,9 @@ function Loginscreen() {
                 setPassword(e.target.value);
               }}
             />
-            <button
-              type="submit"
-              className="btn btn-dark mt-3 float-left"
-              onClick={login}
-            >
+            <button type="submit" className="btn btn-dark mt-3" onClick={login}>
               Login
             </button>
-            <span className="float-right  mt-3">Register</span>
           </div>
         </div>
       </div>

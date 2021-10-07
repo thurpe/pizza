@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import Loader from "./../components/Loader";
 import Error from "./../components/Error";
 import Success from "./../components/Success";
+import { registerUser } from "../actions/userActions";
 
 function Registrationscreen() {
   const [name, setName] = useState("");
@@ -13,7 +14,8 @@ function Registrationscreen() {
   const [error, setError] = useState();
   const [success, setSuccess] = useState();
 
-  async function register() {
+  const dispatch = useDispatch();
+  function register() {
     // eslint-disable-next-line eqeqeq
     if (password == cpassword) {
       const user = {
@@ -24,7 +26,7 @@ function Registrationscreen() {
       };
       try {
         setLoading(true);
-        const result = await axios.post("/api/users/register", user).data;
+        dispatch(registerUser(user));
         setLoading(false);
         setSuccess(true);
 
@@ -32,7 +34,6 @@ function Registrationscreen() {
         setEmail("");
         setPassword("");
         setCPassword("");
-        console.log(result);
       } catch (error) {
         console.log(error);
         setLoading(false);
@@ -54,6 +55,7 @@ function Registrationscreen() {
             <h1 className="text-center">Register</h1>
             <input
               type="text"
+              required
               className="form-control"
               placeholder="Name"
               value={name}
@@ -65,6 +67,7 @@ function Registrationscreen() {
               type="text"
               className="form-control"
               placeholder="Email"
+              required
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
@@ -74,6 +77,7 @@ function Registrationscreen() {
               type="text"
               className="form-control"
               placeholder="Password"
+              required
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
@@ -83,6 +87,7 @@ function Registrationscreen() {
               type="text"
               className="form-control"
               placeholder="Confirm Password"
+              required
               value={cpassword}
               onChange={(e) => {
                 setCPassword(e.target.value);
