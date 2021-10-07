@@ -23,3 +23,16 @@ select {
   box-shadow: none !important;
   border-color: black !important;
 }
+.fa-trash-alt {
+  color: red;
+}
+.spinner input.form-control {
+  background: rgba(255, 0, 0, 0.103) !important;
+}
+
+.bs {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin-top: 20px !important;
+  border-radius: 5px !important;
+  padding: 20px !important;
+}

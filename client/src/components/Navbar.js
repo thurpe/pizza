@@ -1,10 +1,12 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Navbar() {
+  const cartState = useSelector((state) => state.cartReducer);
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-5 bg-body rounded">
-        <a className="navbar-brand" href="/#">
+        <a className="navbar-brand" href="/">
           Fabian's Pizza
         </a>
         <button
@@ -21,13 +23,14 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <a className="nav-link" href="/#">
+              <a className="nav-link" href="/login">
                 Login
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/#">
-                Cart
+              <a className="nav-link" href="/cart">
+                <i className="fa fa-shopping-cart"></i>{" "}
+                {cartState.cartItems.length}
               </a>
             </li>
           </ul>

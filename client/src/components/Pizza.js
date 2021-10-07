@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { addToCart } from "./../actions/cartActions";
+
 export default function Pizza({ pizza }) {
   const [show, setShow] = useState(false);
-
+  const dispatch = useDispatch();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [quantity, setQuantity] = useState(1);
   const [varient, setVarient] = useState("small");
 
+  function addtocart() {
+    dispatch(addToCart(pizza, quantity, varient));
+  }
+
   return (
-    <div
-      style={{ margin: "70px" }}
-      className="shadow p-3 mb-5 bg-white rounded"
-    >
+    <div className="shadow p-3 mb-5 bg-white rounded">
       <div onClick={handleShow}>
         <h1>{pizza.name}</h1>
         <img
@@ -57,7 +61,9 @@ export default function Pizza({ pizza }) {
           <h1>Price: $ {pizza.prices[0][varient] * quantity} </h1>
         </div>
         <div className="m-1 w-100">
-          <button className="btn btn-danger">ADD TO CART</button>
+          <button className="btn btn-danger" onClick={addtocart}>
+            ADD TO CART
+          </button>
         </div>
       </div>
       <Modal show={show}>
