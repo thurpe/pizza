@@ -31,7 +31,7 @@ select {
 }
 
 .bs {
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(83, 29, 29, 0.35) 0px 5px 15px;
   margin-top: 20px !important;
   border-radius: 5px !important;
   padding: 20px !important;
@@ -42,7 +42,7 @@ select,
 .ant-picker {
   box-shadow: none !important;
   margin-top: 10px;
-  border: solid black !important;
+  border: 50% black !important;
   width: 100% !important;
   border-radius: 3px !important;
   margin: 5px !important;

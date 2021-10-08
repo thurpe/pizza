@@ -1,31 +1,28 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
 import Loader from "./../components/Loader";
 import Error from "./../components/Error";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../actions/userActions";
 
 function Loginscreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState();
+  const userState = useSelector((state) => state.loginUserReducer);
+  const { pizzas, error, loading } = userState;
+  const dispatch = useDispatch();
 
-  async function login() {
+  useEffect(() => {
+    if (localStorage.getItem("currentUser")) {
+      window.location.href = "/";
+    }
+  }, []);
+
+  function login() {
     const user = {
       email,
       password,
     };
-    try {
-      setLoading(true);
-      const result = (await axios.post("/api/users/login", user)).data;
-      setLoading(false);
-      localStorage.setItem("currentUser", JSON.stringify(result));
-      window.location.href = "/home";
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-      setError(true);
-    }
-    console.log(user);
+    dispatch(loginUser(user));
   }
   return (
     <div>
