@@ -1,47 +1,25 @@
-export const registerUserReducer = (state = {}, action) => {
+export const placeOrderReducer = (state = {}, action) => {
   switch (action.type) {
-    case "USER_REGISTER_REQUEST":
+    case "PLACE_ORDER_REQUEST":
       return {
         loading: true,
       };
-    case "USER_REGISTER_SUCCESS":
+    case "PLACE_ORDER_SUCCESS":
       return {
         loading: false,
         success: true,
       };
-    case "USER_REGISTER_FAILED":
+    case "PLACE_ORDER_FAILED":
       return {
         loading: false,
         error: action.payload,
       };
-
     default:
       return state;
   }
 };
-export const loginUserReducer = (state = {}, action) => {
-  switch (action.type) {
-    case "USER_LOGIN_REQUEST":
-      return {
-        loading: true,
-      };
-    case "USER_LOGIN_SUCCESS":
-      return {
-        loading: false,
-        success: true,
-        currentUser: action.payload,
-      };
-    case "USER_LOGIN_FAILED":
-      return {
-        loading: false,
-        error: action.payload,
-      };
 
-    default:
-      return state;
-  }
-};
-export const getUserOrdersReducer = (state = { orders: [] }, action) => {
+export const getUserOrdersReducer = (state = { oredrs: [] }, action) => {
   switch (action.type) {
     case "GET_USER_ORDERS_REQUEST":
       return {
@@ -58,7 +36,28 @@ export const getUserOrdersReducer = (state = { orders: [] }, action) => {
         error: action.payload,
         loading: false,
       };
+    default:
+      return state;
+  }
+};
 
+export const getAllOrdersReducer = (state = { oredrs: [] }, action) => {
+  switch (action.type) {
+    case "GET_ALLORDERS_REQUEST":
+      return {
+        loading: true,
+        ...state,
+      };
+    case "GET_ALLORDERS_SUCCESS":
+      return {
+        loading: false,
+        orders: action.payload,
+      };
+    case "GET_ALLORDERS_FAILED":
+      return {
+        error: action.payload,
+        loading: false,
+      };
     default:
       return state;
   }

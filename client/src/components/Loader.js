@@ -4,7 +4,7 @@ export default function Loader() {
   return (
     <div>
       <div
-        class="spinner-border"
+        className="spinner-border text-center"
         role="status"
         style={{ height: "100px", width: "100px", marginTop: "100px" }}
       >

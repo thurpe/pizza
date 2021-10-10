@@ -23,3 +23,21 @@ export const loginUser = (user) => async (dispatch) => {
     dispatch({ type: "USER_LOGIN_FAILED", payload: error });
   }
 };
+export const logoutUser = () => (dispatch) => {
+  localStorage.removeItem("currentUser");
+  window.location.href = "/login";
+};
+
+export const getUserOrders = () => async (dispatch, getState) => {
+  const currentUser = getState().loginUserReducer.currentUser;
+  dispatch({ type: "GET_USER_ORDERS_REQUEST" });
+  try {
+    const response = await axios.get("/api/orders/getuserorders", {
+      userid: currentUser._id,
+    });
+    console.log(response);
+    dispatch({ type: "GET_USER_ORDERS_SUCCESS", payload: response.data });
+  } catch (error) {
+    dispatch({ type: "GET_USER_ORDERS_FAILED", payload: error });
+  }
+};

@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Loader from "./../components/Loader";
 import Error from "./../components/Error";
 import Success from "./../components/Success";
 import { registerUser } from "../actions/userActions";
 
 function Registrationscreen() {
+  const registerState = useSelector((state) => state.registerUserReducer);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState();
-  const [success, setSuccess] = useState();
+  const { loading, success, error } = registerState;
 
   const dispatch = useDispatch();
   function register() {
@@ -24,21 +23,7 @@ function Registrationscreen() {
         password,
         cpassword,
       };
-      try {
-        setLoading(true);
-        dispatch(registerUser(user));
-        setLoading(false);
-        setSuccess(true);
-
-        setName("");
-        setEmail("");
-        setPassword("");
-        setCPassword("");
-      } catch (error) {
-        console.log(error);
-        setLoading(false);
-        setError(true);
-      }
+      dispatch(registerUser(user));
     } else {
       alert("passwords do not match!");
     }
@@ -46,11 +31,11 @@ function Registrationscreen() {
 
   return (
     <div>
-      {loading && <Loader />}
-      {error && <Error />}
       <div className="row justify-content-center mt-5">
         <div className="col-md-5 mt-5">
+          {loading && <Loader />}
           {success && <Success message="Your registration was successful!" />}
+          {error && <Error message="Email is already in use. Try later!" />}
           <div className="bs">
             <h1 className="text-center">Register</h1>
             <input
@@ -99,7 +84,9 @@ function Registrationscreen() {
               onClick={register}
             >
               Register
-            </button>
+            </button>{" "}
+            <br />
+            <a href="/login">Click here to login</a>
           </div>
         </div>
       </div>

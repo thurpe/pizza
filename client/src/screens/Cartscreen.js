@@ -2,6 +2,7 @@ import React from "react";
 import InputSpinner from "react-bootstrap-input-spinner";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, removeFromCart } from "./../actions/cartActions";
+import Checkout from "./../components/Checkout";
 
 export default function Cartscreen() {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ export default function Cartscreen() {
                     Price: {item.quantity} * {item.prices[0][item.varient]} ={" "}
                     {item.price}
                   </h1>
-                  <div className="spinner" style={{ display: "inline" }}>
+                  <div className="spinner">
                     <InputSpinner
                       type={"real"}
                       precision={2}
@@ -60,7 +61,7 @@ export default function Cartscreen() {
         </div>
         <div className="col-md-4">
           <h2 style={{ fontSize: "45px" }}>Subtotal: ${subTotal}</h2>
-          <button className="btn btn-danger">CHECK OUT</button>
+          <Checkout />
         </div>
       </div>
     </div>

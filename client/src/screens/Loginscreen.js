@@ -8,7 +8,7 @@ function Loginscreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const userState = useSelector((state) => state.loginUserReducer);
-  const { pizzas, error, loading } = userState;
+  const { error, loading } = userState;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,12 +26,12 @@ function Loginscreen() {
   }
   return (
     <div>
-      {loading && <Loader />}
       <div className="row justify-content-center mt-5">
         <div className="col-md-5 mt-5">
-          {error && <Error message="Invalid credentials" />}
           <div className="bs">
             <h1 className="text-center">Login</h1>
+            {loading && <Loader />}
+            {error && <Error message="Invalid credentials" />}
             <input
               type="text"
               className="form-control"
@@ -53,6 +53,8 @@ function Loginscreen() {
             <button type="submit" className="btn btn-dark mt-3" onClick={login}>
               Login
             </button>
+            <br />
+            <a href="/register">Click here to register</a>
           </div>
         </div>
       </div>
