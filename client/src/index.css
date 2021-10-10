@@ -28,6 +28,9 @@ select {
 }
 .spinner input.form-control {
   background: rgba(255, 0, 0, 0.103) !important;
+  white-space: nowrap !important;
+  width: 10% !important;
+  display: inline-block !important;
 }
 
 .bs {

@@ -25,7 +25,7 @@ export default function Cartscreen() {
                     Price: {item.quantity} * {item.prices[0][item.varient]} ={" "}
                     {item.price}
                   </h1>
-                  <div className="spinner">
+                  <div className="spinner w-50">
                     <InputSpinner
                       type={"real"}
                       precision={2}
@@ -39,7 +39,7 @@ export default function Cartscreen() {
                         );
                       }}
                       variant={"danger"}
-                      size="lg"
+                      size="sm"
                     />
                   </div>
                   <hr />
