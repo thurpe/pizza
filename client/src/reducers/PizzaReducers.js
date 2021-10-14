@@ -20,3 +20,25 @@ export const getAllPizzasReducer = (state = { pizzas: [] }, action) => {
       return state;
   }
 };
+export const addPizzaReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "ADD_PIZZAS_REQUEST":
+      return {
+        loading: true,
+        ...state,
+      };
+    case "ADD_PIZZAS_SUCCESS":
+      return {
+        loading: false,
+        success: true,
+      };
+    case "ADD_PIZZAS_FAILED":
+      return {
+        error: action.payload,
+        loading: false,
+      };
+
+    default:
+      return state;
+  }
+};

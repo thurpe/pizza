@@ -50,3 +50,21 @@ select,
   border-radius: 3px !important;
   margin: 5px !important;
 }
+.admin {
+  padding: 10px;
+  background-color: darkred;
+}
+
+.admin li {
+  list-style-type: none !important;
+  display: inline !important;
+}
+.admin li a {
+  color: wheat;
+  padding: 20px;
+}
+td,
+th,
+tr {
+  text-align: left;
+}
