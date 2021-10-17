@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { addToCart } from "./../actions/cartActions";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Pizza({ pizza }) {
+  AOS.init();
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const handleClose = () => setShow(false);
@@ -16,7 +19,7 @@ export default function Pizza({ pizza }) {
   }
 
   return (
-    <div className="shadow p-3 mb-5 bg-white rounded">
+    <div className="shadow p-3 mb-5 bg-white rounded" data-aos="zoom-in">
       <div onClick={handleShow}>
         <h1>{pizza.name}</h1>
         <img

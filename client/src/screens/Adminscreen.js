@@ -5,6 +5,7 @@ import Userslist from "./Userslist";
 import Pizzaslist from "./Pizzaslist";
 import NewPizzas from "./NewPizzas";
 import Orderslist from "./Orderslist";
+import Editpizza from "./Editpizza";
 
 export default function Adminscreen() {
   const dispatch = useDispatch();
@@ -42,6 +43,11 @@ export default function Adminscreen() {
             <Route path="/admin/pizzaslist" component={Pizzaslist} exact />
             <Route path="/admin/addnewpizza" component={NewPizzas} exact />
             <Route path="/admin/orderslist" component={Orderslist} exact />
+            <Route
+              path="/admin/editpizza/:pizzaid"
+              component={Editpizza}
+              exact
+            />
           </Switch>
         </div>
       </div>

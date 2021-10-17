@@ -28,4 +28,38 @@ router.post("/addpizza", async (req, res) => {
     return res.status(400).json({ error });
   }
 });
+router.post("/getpizzabyid", async (req, res) => {
+  const pizzaid = req.body.pizzaid;
+  try {
+    const pizza = await Pizza.findOne({ _id: pizzaid });
+    res.send(pizza);
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+});
+router.post("/updatepizza", async (req, res) => {
+  const updatedpizza = req.body.updatedpizza;
+  try {
+    const pizza = await Pizza.findOne({ _id: updatedpizza._id });
+    (pizza.name = updatedpizza.name),
+      (pizza.description = updatedpizza.description),
+      (pizza.image = updatedpizza.image),
+      (pizza.category = updatedpizza.category),
+      (pizza.prices = [updatedpizza.prices]);
+    await pizza.save();
+    res.send("Pizza details updated successfully!");
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+});
+
+router.post("/deletepizza", async (req, res) => {
+  const pizzaid = req.body.pizzaid;
+  try {
+    await Pizza.findOneAndDelete({ _id: pizzaid });
+    res.send("Pizza deleted successfully!");
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+});
 module.exports = router;

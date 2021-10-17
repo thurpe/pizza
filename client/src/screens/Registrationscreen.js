@@ -59,7 +59,7 @@ function Registrationscreen() {
               }}
             />
             <input
-              type="text"
+              type="password"
               className="form-control"
               placeholder="Password"
               required
@@ -69,7 +69,7 @@ function Registrationscreen() {
               }}
             />
             <input
-              type="text"
+              type="password"
               className="form-control"
               placeholder="Confirm Password"
               required

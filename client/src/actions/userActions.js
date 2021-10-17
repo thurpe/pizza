@@ -41,3 +41,25 @@ export const getUserOrders = () => async (dispatch, getState) => {
     dispatch({ type: "GET_USER_ORDERS_FAILED", payload: error });
   }
 };
+
+export const getAllUsers = () => async (dispatch) => {
+  dispatch({ type: "GET_ALLUSERS_REQUEST" });
+  try {
+    const response = await axios.get("/api/users/getallusers");
+    console.log(response);
+    dispatch({ type: "GET_ALLUSERS_SUCCESS", payload: response.data });
+  } catch (error) {
+    dispatch({ type: "GET_ALLUSERS_FAILED", payload: error });
+  }
+};
+
+export const deleteUser = (userid) => async (dispatch) => {
+  try {
+    await axios.post("/api/users/deleteuser", { userid });
+    alert("This user has been deleted successfully");
+    window.location.reload();
+  } catch (error) {
+    alert("Action failed to complete!");
+    console.log(error);
+  }
+};

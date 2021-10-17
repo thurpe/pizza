@@ -42,7 +42,7 @@ function Loginscreen() {
               }}
             />
             <input
-              type="text"
+              type="password"
               className="form-control"
               placeholder="Password"
               value={password}

@@ -41,7 +41,7 @@ export const getUserOrdersReducer = (state = { oredrs: [] }, action) => {
   }
 };
 
-export const getAllOrdersReducer = (state = { oredrs: [] }, action) => {
+export const getAllOrdersReducer = (state = { orders: [] }, action) => {
   switch (action.type) {
     case "GET_ALLORDERS_REQUEST":
       return {

@@ -15,7 +15,7 @@ export default function Filter() {
               setSearchKey(e.target.value);
             }}
             value={searchkey}
-            type="text"
+            type="search"
             className="form-control"
             placeholder="search pizzas"
           />

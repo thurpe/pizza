@@ -6,7 +6,9 @@ export default function Navbar() {
   const dispatch = useDispatch();
   const cartState = useSelector((state) => state.cartReducer);
   const userState = useSelector((state) => state.loginUserReducer);
+  const usersState = useSelector((state) => state.getAllUsersReducer);
   const { currentUser } = userState;
+  const { users } = usersState;
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-5 bg-body rounded">
@@ -45,6 +47,7 @@ export default function Navbar() {
                   <a className="dropdown-item" href="/orders">
                     My Orders
                   </a>
+
                   <a
                     className="dropdown-item"
                     href="/#"

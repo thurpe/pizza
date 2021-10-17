@@ -3,15 +3,20 @@ import InputSpinner from "react-bootstrap-input-spinner";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, removeFromCart } from "./../actions/cartActions";
 import Checkout from "./../components/Checkout";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Cartscreen() {
+  AOS.init({
+    duration: 1000,
+  });
   const dispatch = useDispatch();
   const cartState = useSelector((state) => state.cartReducer);
   const cartItems = cartState.cartItems;
   let subTotal = cartItems.reduce((x, item) => x + item.price, 0);
   return (
     <div>
-      <div className="row justify-content-center">
+      <div className="row justify-content-center p-2" data-aos="fade-down">
         <div className="col-md-6">
           <h2 style={{ fontSize: "40px" }}>My Cart</h2>
           {cartItems.map((item) => {
