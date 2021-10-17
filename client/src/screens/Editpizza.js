@@ -54,12 +54,15 @@ export default function Editpizza({ match }) {
 
   return (
     <div>
-      <div>
+      <div className="bs">
         <h1 className="text-left">Edit Pizza</h1>
         {loading && <Loader />}
         {error && <Error message="Something went wrong! Try again later..." />}
         {updatedsuccess && <Success message="Pizza update was successful!" />}
         {updatedloading && <Loader />}
+        {updatederror && (
+          <Error message="Something went wrong! Try again later..." />
+        )}
         <form onSubmit={formHandler}>
           <input
             type="text"

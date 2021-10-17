@@ -1,10 +1,12 @@
-body {
+body,
+html {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden !important;
 }
 
 code {
@@ -34,7 +36,7 @@ select {
 }
 
 .bs {
-  box-shadow: rgba(83, 29, 29, 0.35) 0px 5px 15px;
+  box-shadow: rgba(31, 29, 29, 0.35) 0px 5px 15px;
   margin-top: 20px !important;
   border-radius: 5px !important;
   padding: 20px !important;

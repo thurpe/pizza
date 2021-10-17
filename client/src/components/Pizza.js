@@ -6,7 +6,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 export default function Pizza({ pizza }) {
-  AOS.init();
+  AOS.init({
+    duration: 1000,
+  });
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const handleClose = () => setShow(false);

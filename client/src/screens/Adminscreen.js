@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Route, Switch, Link } from "react-router-dom";
 import Userslist from "./Userslist";
 import Pizzaslist from "./Pizzaslist";
@@ -8,7 +8,6 @@ import Orderslist from "./Orderslist";
 import Editpizza from "./Editpizza";
 
 export default function Adminscreen() {
-  const dispatch = useDispatch();
   const userState = useSelector((state) => state.loginUserReducer);
   const { currentUser } = userState;
 
@@ -16,10 +15,11 @@ export default function Adminscreen() {
     if (!currentUser.isAdmin) {
       window.location.href = "/";
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div>
-      <div className="row justify-content-center">
+      <div className="row justify-content-center p-3">
         <div className="col-md-10">
           <h1 style={{ fontSize: "20px" }}>Admin Panel</h1>
           <hr />

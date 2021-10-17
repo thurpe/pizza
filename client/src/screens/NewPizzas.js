@@ -34,7 +34,7 @@ export default function NewPizzas() {
   }
   return (
     <div>
-      <div>
+      <div className="text-left bs">
         <h1>Add New Pizza</h1>
         {loading && <Loader />}
         {error && <Error message="Something went wrong! Try again later..." />}

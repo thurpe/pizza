@@ -20,7 +20,7 @@ export default function Pizzaslist() {
       {loading && <Loader />}
       {error && <Error error="Something went wrong" />}
 
-      <table className="table table-bordered">
+      <table className="table table-bordered table-responsive-sm">
         <thead className="thead-dark">
           <tr>
             <th>Name</th>
